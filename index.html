@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Route 66 — Enzo & Noé, sept. 2026</title>
+<meta name="description" content="Roadtrip Oklahoma City → Los Angeles, 5-22 septembre 2026 : programme jour par jour, randonnées, réservations et liste de courses.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛣️</text></svg>">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap hero-inner">
+    <div class="hero-eyebrow"><span class="dot"></span> ENZO &amp; NOÉ · ROADTRIP 2026</div>
+    <h1>Route <span>66</span></h1>
+    <p class="hero-sub">Oklahoma City → Los Angeles. 18 jours, ~4 800 km, 7 États traversés, un nombre indéterminé de Cadillac plantées dans le sol.</p>
+    <div class="hero-meta">
+      <div><div class="k">Départ</div><div class="v">5 sept. 2026</div></div>
+      <div><div class="k">Retour</div><div class="v">22 sept. 2026</div></div>
+      <div><div class="k">Étapes</div><div class="v">18 jours</div></div>
+      <div><div class="k">Budget / pers.</div><div class="v">≈ 1 560 $</div></div>
+    </div>
+    <div class="hero-countdown" id="countdownBox"></div>
+  </div>
+</header>
+
+<div class="road-nav-shell">
+  <div class="road-nav">
+    <div class="road-track" id="roadTrack"></div>
+  </div>
+  <nav class="quicknav">
+    <a href="#dayPanels" id="mainNavTab" class="active">Programme jour par jour</a>
+    <a href="#reservations">Réservations</a>
+    <a href="#courses">Liste de courses</a>
+    <a href="#budget">Budget</a>
+  </nav>
+</div>
+
+<main>
+  <div class="wrap">
+    <div id="dayPanels"></div>
+  </div>
+
+  <section class="section" id="reservations">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Check-list</div>
+        <h2>Réservations</h2>
+        <p>Tout ce qui doit être bloqué avant le départ. Les lignes surlignées en orange sont encore <strong>à réserver</strong> — le voyage commence dans quelques semaines, ne traînez pas dessus.</p>
+      </div>
+      <table class="res-table">
+        <thead><tr><th></th><th>Dates</th><th>Élément</th><th>Prix / pers.</th><th>Statut</th></tr></thead>
+        <tbody id="resBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section" id="courses">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Jour 1 — avant de quitter OKC</div>
+        <h2>Liste de courses</h2>
+        <p>À faire au premier supermarché après avoir récupéré la voiture. Cochez au fur et à mesure — l'état est sauvegardé sur cet appareil.</p>
+      </div>
+      <div class="shop-progress" id="shopProgress"></div>
+      <div class="shop-grid" id="shopGrid"></div>
+    </div>
+  </section>
+
+  <section class="section" id="budget">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Vue d'ensemble</div>
+        <h2>Budget par personne</h2>
+        <p>Basé sur la feuille de calcul du voyage (vols, location, hôtels réservés). Les activités non encore réservées (pass parc, Antelope Canyon, billets Universal) ne sont pas encore comptées.</p>
+      </div>
+      <div class="budget-total">
+        <div>
+          <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--turquoise);">Total engagé / pers.</div>
+          <div class="v" id="budgetTotal">—</div>
+        </div>
+        <div style="font-size:13.5px;max-width:320px;color:rgba(243,236,217,0.75);">Hors dépenses sur place (essence, repas, activités à réserver, souvenirs).</div>
+      </div>
+      <div class="budget-bars" id="budgetBars"></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; align-items:center;">
+    <div>Route 66 · Enzo &amp; Noé · Fait avec Claude — <a href="https://en.wikipedia.org/wiki/U.S._Route_66" target="_blank" rel="noopener">à propos de la Route 66</a></div>
+    <button class="reset-link" id="resetProgress">Réinitialiser les cases cochées</button>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="script.js"></script>
+<script>
+  // Countdown avant le départ
+  (function(){
+    const dep = new Date("2026-09-05T00:00:00");
+    const now = new Date();
+    const diff = Math.ceil((dep - now) / (1000*60*60*24));
+    const box = document.getElementById("countdownBox");
+    if(diff > 0){
+      box.innerHTML = `⏳ <b>J-${diff}</b> avant le départ — pensez à finaliser les réservations en attente (Antelope Canyon, pass parc, Mustang LAX, billets Universal).`;
+    } else if(diff <= 0 && dep - now > -18*24*60*60*1000){
+      box.innerHTML = `🛣️ <b>Le voyage a commencé — bonne route !</b>`;
+    } else {
+      box.style.display = "none";
+    }
+  })();
+</script>
+</body>
+</html>
