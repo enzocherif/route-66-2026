@@ -10,7 +10,7 @@ function renderRoadNav(){
   const track = document.getElementById("roadTrack");
   track.innerHTML = `<div class="road-line"></div>` + DAYS.map((d,i) => `
     <button class="mile" data-day="${d.id}" aria-label="Jour ${d.id} — ${d.title}">
-      ${ (d.alert && d.alert.tone==='rust') ? `<span class="badge">!</span>` : "" }
+      ${ (d.alert && (Array.isArray(d.alert) ? d.alert.some(a=>a.tone==='rust') : d.alert.tone==='rust')) ? `<span class="badge">!</span>` : "" }
       <div class="pin"></div>
       <div class="d">${d.date}</div>
       <div class="t">${d.title.length > 22 ? d.title.slice(0,20)+"…" : d.title}</div>
@@ -56,11 +56,15 @@ function renderDayPanels(){
         onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,${encodeURIComponent(fallbackSvg(d.title))}';">
       <div class="day-photo-cap">${d.photoCap || ""}</div>
 
-      ${ d.alert ? `
-      <div class="alert ${d.alert.tone === 'mustard' ? 'mustard' : ''}">
-        <div class="ic">${d.alert.tone === 'rust' ? '⚠️' : '⏰'}</div>
-        <div><b>${d.alert.title}</b>${d.alert.text}</div>
-      </div>` : "" }
+      ${ (function(){
+          if(!d.alert) return "";
+          const alerts = Array.isArray(d.alert) ? d.alert : [d.alert];
+          return alerts.map(a => `
+      <div class="alert ${a.tone === 'mustard' ? 'mustard' : (a.tone === 'ok' ? 'ok' : '')}">
+        <div class="ic">${a.tone === 'rust' ? '⚠️' : (a.tone === 'ok' ? '✅' : '⏰')}</div>
+        <div><b>${a.title}</b>${a.text}</div>
+      </div>`).join("");
+        })() }
 
       <div class="grid2">
         <div>

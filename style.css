@@ -339,6 +339,7 @@ main{ padding: 40px 0 100px; }
 .alert .ic{ font-size: 20px; line-height:1; }
 .alert b{ display:block; margin-bottom:2px; }
 .alert.mustard{ border-color: var(--mustard); background: repeating-linear-gradient(135deg, rgba(224,165,39,0.1) 0 10px, rgba(224,165,39,0.04) 10px 20px); }
+.alert.ok{ border-color: var(--turquoise); border-style: solid; background: rgba(31,138,131,0.07); }
 
 /* ---------- SECTIONS (checklist / shopping / budget) ---------- */
 .section{ padding: 70px 0; border-top: 3px solid var(--asphalt); }
