@@ -216,32 +216,48 @@ const DAYS = [
 // ---------------------------------------------------------------- JOUR 7
 {
   id: 7, date: "11 sept.", weekday: "Vendredi", region: "Utah → Nevada",
-  title: "Zion National Park → Las Vegas",
-  wake: "5h00", wakeType:"calc",
-  wakeReason: "Premier départ de navette vers 7h en pleine saison — pour en attraper une des toutes premières (essentiel pour faire The Narrows ou Angels Landing avant l'afflux), comptez 1h de route Kanab → Zion + 15-20 min pour rejoindre l'arrêt navette depuis le parking. Départ de Kanab visé vers 5h45.",
-  breakfast: { included:true, note:"Petit-déjeuner à l'Hôtel Kanab (nuit précédente) — avec un départ visé à 5h45, vérifiez l'horaire d'ouverture de la salle de petit-déj en arrivant la veille ; prévoyez un plan B à emporter si elle ouvre trop tard." },
+  title: "Zion : Canyon Overlook, tunnel, The Narrows & Emerald Pools → Las Vegas",
+  wake: "5h20", wakeType:"calc",
+  wakeReason: "Deux raisons de partir très tôt : avoir une place à Canyon Overlook (parking \"extrêmement limité\" selon le NPS) et faire The Narrows le matin, avant la chaleur et surtout avant le risque d'orages de l'après-midi. Réveil 5h20, préparation + checkout 5h20-5h45, départ de Kanab 5h45.",
+  breakfast: { included:false, note:"Pas de petit-déjeuner à table ce matin — départ à 5h45, bien avant l'ouverture d'une éventuelle salle de petit-déj à l'Hôtel Kanab. Prenez directement le pique-nique du matin avec vous (acheté la veille), pas de supermarché sur la route." },
   photo: WIKI("Angels Landing and the Great White Throne.jpg"),
   photoCap: "Zion National Park, Utah — Wikimedia Commons",
   hotel: { name: "Las Vegas — Luxor Hotel & Casino", link: null, price: "245,50 $ / pers. (3 nuits)" },
-  alert: { tone:"mustard", title:"Angels Landing : loterie la veille", text:"Si vous voulez tenter Angels Landing (la randonnée avec chaînes, vue à couper le souffle), un permis est obligatoire au-delà de Scout Lookout. La loterie saisonnière de septembre est déjà fermée (elle ouvrait le 1er juillet), mais une loterie \"day-before\" (la veille pour le lendemain) reste ouverte sur recreation.gov — tentez votre chance le 10 septembre au soir. Sans permis, la randonnée s'arrête à Scout Lookout, ce qui reste une belle vue." },
+  alert: [
+    { tone:"mustard", title:"Programme \"sans Angels Landing\"", text:"Ce déroulé suppose que vous n'avez pas eu le permis Angels Landing (loterie \"day-before\" tentée la veille sur recreation.gov). Si vous l'avez eu, le programme change en profondeur — dites-le moi pour que je le refasse en conséquence. Sans permis, la randonnée s'arrête à Scout Lookout, qui reste une belle vue mais n'est pas intégrée à ce programme-ci." },
+    { tone:"rust", title:"Condition absolue : The Narrows doit être ouvert", text:"Le NPS ferme The Narrows si le débit de la Virgin River dépasse 150 CFS, ou en cas de Flash Flood Warning en cours. En dessous de 70 CFS la marche est raisonnable ; au-dessus, remonter le courant devient nettement plus dur. Vérifiez le matin même : débit de la rivière, météo, Flash Flood Potential et statut officiel de The Narrows sur la page \"current conditions\" du NPS." }
+  ],
   timeline: [
-    { type:"drive", label:"Kanab → Zion National Park", dur:"1 h 00", desc:"", link: gmaps("37°9'18.4\"N 112°54'25.7\"W"), linkText:"Itinéraire Google Maps" },
-    { type:"hike", label:"Randonnée dans Zion Canyon", dur:"Matinée", desc:"La route panoramique du canyon est fermée aux véhicules privés (navette gratuite obligatoire, pas de réservation nécessaire pour la navette elle-même, 1er départ ~7h). Selon votre niveau : The Narrows (marcher dans la rivière, sensations garanties, prévoir chaussures fermées qui peuvent être mouillées), Angels Landing (avec permis, voir alerte), ou Emerald Pools (familial, sans permis).", link: gmaps("The Grotto Zion National Park Shuttle Stop 6"), linkText:"Ouvrir l'arrêt navette (The Grotto)" },
-    { type:"drive", label:"Zion → Las Vegas", dur:"2 h 51", desc:"", link: gmaps("36°32'40.8\"N 114°59'20.4\"W"), linkText:"Itinéraire Google Maps" },
+    { type:"activity", label:"Réveil, préparation, checkout", dur:"5h20 → 5h45", desc:"Départ de Kanab avec le pique-nique du matin déjà en main : 2-3 L d'eau/pers, sandwichs/snacks, crème solaire, casquette, serviette, vêtements qui sèchent vite, chaussures fermées pouvant aller dans l'eau, et idéalement un bâton solide pour The Narrows (le NPS compare le fond à des \"wet bowling balls\" tant les pierres sont glissantes)." },
+    { type:"drive", label:"Kanab → East Entrance de Zion", dur:"5h45 → ≈6h35", desc:"Vous entrez par l'Est, parfait en venant de Kanab, puis roulez sur la Zion–Mount Carmel Highway jusqu'à Canyon Overlook.", link: gmaps("Zion National Park East Entrance"), linkText:"Ouvrir dans Maps" },
+    { type:"hike", label:"Canyon Overlook Trail", dur:"6h40 → 7h40", desc:"1,6 km A/R, ~50 m de dénivelé, ~1h au total. Vue superbe sur Pine Creek Canyon et le bas de Zion Canyon. ⚠️ Parking \"extrêmement limité\" selon le NPS — d'où l'arrivée dès 6h35. Si le petit parking est plein, cherchez immédiatement les emplacements autorisés alentour, ne vous garez pas sur l'accotement.", link: gmaps("Canyon Overlook Trailhead Zion"), linkText:"Ouvrir dans Maps" },
+    { type:"drive", label:"Zion–Mount Carmel Tunnel + descente vers le canyon", dur:"≈7h40 → 8h15", desc:"Tunnel de 1930, environ 1,8 km, avec de grandes ouvertures taillées dans la falaise qui donnent brièvement sur Zion Canyon. ⚠️ Interdiction formelle de s'arrêter ou de marcher dedans — on le traverse en voiture et on profite des ouvertures en roulant. Juste après : les grands lacets qui descendent vers le fond du canyon, une portion magnifique, prenez votre temps." },
+    { type:"activity", label:"Parking — Zion Canyon Visitor Center", dur:"≈8h15", desc:"1 Zion Park Blvd, Springdale. Vous laissez la voiture ici pour le reste de la journée : la Zion Canyon Scenic Drive est fermée aux véhicules privés en horaire d'été, navette obligatoire (aucune réservation nécessaire). Le 11 septembre : premier bus 7h, dernier bus montant 19h, dernier bus descendant de Temple of Sinawava 20h15, passages toutes les 5-10 min.", link: gmaps("Zion Canyon Visitor Center"), linkText:"Ouvrir dans Maps" },
+    { type:"drive", label:"Navette jusqu'à Temple of Sinawava (arrêt #9)", dur:"≈8h25 → 9h10", desc:"Terminus de la navette, ~45 min depuis le Visitor Center. C'est volontairement la première étape de la journée : moins chaud, moins de monde et moins de risque d'orage/flash flood que plus tard dans la journée." },
+    { type:"hike", label:"Riverside Walk (aller)", dur:"9h10 → 9h50", desc:"Sentier qui longe la Virgin River jusqu'au point où le chemin pédestre s'arrête — les falaises se resserrent progressivement. Au bout, il n'y a plus de chemin : le chemin devient la rivière elle-même." },
+    { type:"hike", label:"🌊 The Narrows", dur:"9h50 → 11h20 (≈1h30 dans l'eau)", desc:"Objectif : ~45 min en remontant la Virgin River (photos, profiter du canyon entre les immenses parois) puis ~45 min pour revenir — point de demi-tour visé vers 10h35-10h40. Prolongeable jusqu'à 11h40 max si les conditions sont excellentes et que vous adorez ça. Vérifiez impérativement les conditions le matin même (voir alerte ci-dessus).", link: gmaps("The Narrows Riverside Walk Trailhead"), linkText:"Ouvrir dans Maps" },
+    { type:"hike", label:"Riverside Walk (retour)", dur:"11h20 → ≈12h00", desc:"Sortie de l'eau, serviette rapide, retour par le même chemin jusqu'à Temple of Sinawava." },
+    { type:"drive", label:"Navette → Zion Lodge (arrêt #5)", dur:"12h00 → ≈12h20", desc:"C'est ici que partent les sentiers des Emerald Pools." },
+    { type:"activity", label:"Pique-nique à Zion Lodge", dur:"12h20 → 12h50", desc:"Tables, toilettes, eau, et restauration sur place si besoin en complément. 30 min max — profitez-en pour changer de chaussettes/chaussures si elles sont trempées après The Narrows." },
+    { type:"hike", label:"💚 Emerald Pools — Middle, Upper & Lower", dur:"12h50 → ≈15h15 (≈2h15-2h30)", desc:"Le pont d'accès depuis Zion Lodge a rouvert en 2025. Ordre conseillé : Middle Emerald Pools (~3,5 km A/R si fait seul, ~1h30, corniche de grès avec vues sur Zion Canyon) → Upper Emerald Pool (dernier segment ~0,4 km, bassin encaissé au pied d'une immense falaise, à ne pas rater) → redescente par Lower Emerald Pool (au pied des parois, petites cascades selon le débit) → retour à Zion Lodge. ⚠️ Baignade interdite dans les Emerald Pools (milieux fragiles, ressource en eau pour la faune). En septembre après un été sec, les chutes sont souvent discrètes — la balade reste belle pour les falaises et les vues, mais ne vous attendez pas à de grosses cascades.", link: gmaps("Emerald Pools Trailhead Zion"), linkText:"Ouvrir dans Maps" },
+    { type:"drive", label:"Navette retour → Visitor Center", dur:"≈15h20 → 15h50", desc:"Récupération de la voiture vers 15h45-16h. Petite pause : toilettes, eau, boutique si souvenir, photo devant le panneau Zion." },
+    { type:"drive", label:"Zion → Las Vegas", dur:"≈16h10 → ≈17h55 (heure Vegas)", desc:"Springdale → Hurricane → I-15 → Las Vegas, environ 2h45 de route. Vous gagnez 1h en route : Zion est en Mountain Time, Las Vegas en Pacific Time — un départ à 16h10 (Utah) donne donc une arrivée vers 17h55 (Nevada), avec encore une vraie soirée devant vous sur le Strip.", link: gmaps("36°32'40.8\"N 114°59'20.4\"W"), linkText:"Itinéraire Google Maps" },
     { type:"sleep", label:"Dodo — Las Vegas (Luxor Hotel & Casino)", dur:"", desc:"3 nuits sur place.", link: gmaps("Luxor Hotel and Casino Las Vegas"), linkText:"Voir sur Maps" }
   ],
   highlight: {
-    name: "The Narrows / Angels Landing (Zion)",
-    difficulty: "moderate", diffLabel: "Modéré à difficile selon le choix",
-    distance: "The Narrows (aller simple depuis le fond, sans permis) : jusqu'à ~5 km A/R faisable en demi-journée · Angels Landing : 7,6 km A/R",
-    duration: "2 à 4 h",
-    water: "Peu de points d'eau sur les sentiers de Zion — partez avec vos réserves. Pour The Narrows, vous marcherez dans l'eau de la rivière Virgin (fraîche même en septembre).",
-    gear: "Pour The Narrows : chaussures fermées avec bonne adhérence que vous acceptez de mouiller (ou location de chaussures/bâtons de rando à Springdale). Pour Angels Landing : gants recommandés pour les chaînes, aucune peur du vide.",
-    reservation: "Navette : aucune réservation. Angels Landing : permis obligatoire au-delà de Scout Lookout (voir alerte ci-dessus).",
+    name: "Canyon Overlook Trail & The Narrows (Zion)",
+    difficulty: "moderate", diffLabel: "Facile (Canyon Overlook) à modéré (The Narrows)",
+    distance: "Canyon Overlook : 1,6 km A/R · The Narrows : jusqu'à ~3 km A/R dans l'eau (1h30 sur place) · Emerald Pools (3 combinés) : ≈4-5 km au total",
+    duration: "Canyon Overlook : 1h · The Narrows : 1h30 · Emerald Pools : 2h15-2h30",
+    water: "2-3 L d'eau/personne pour toute la journée. Peu de points de ravitaillement une fois dans le canyon — mangez et remplissez les gourdes à Zion Lodge en milieu de journée.",
+    gear: "Chaussures fermées à bonne adhérence que vous acceptez de mouiller pour The Narrows (fond glissant, comparé par le NPS à des \"wet bowling balls\"), idéalement un bâton solide, vêtements qui sèchent vite, serviette, crème solaire, casquette. Chaussures de rechange utiles pour l'après-midi (Emerald Pools).",
+    reservation: "Navette : aucune réservation, aucun coût. The Narrows et Emerald Pools : accès libre, mais The Narrows peut fermer selon le débit de la rivière ou une alerte flash flood — à vérifier le matin même.",
     tips: [
-      "La saison des navettes 2026 tourne toutes les 5-10 minutes en haute saison — comptez large pour le trajet en navette lui-même.",
-      "Angels Landing n'est pas recommandé en cas de vertige : les 150 derniers mètres se font à la chaîne sur une arête étroite avec du vide des deux côtés.",
-      "Pas de restauration dans le canyon lui-même — mangez à Springdale avant ou après."
+      "Le parking de Canyon Overlook est le vrai goulot d'étranglement de la matinée : arrivez avant 6h40 pour être sûrs d'avoir une place.",
+      "Dans le tunnel Zion–Mount Carmel : interdiction de s'arrêter ou de marcher, on le vit uniquement depuis la voiture.",
+      "The Narrows est placé en premier volontairement : moins chaud, moins de monde, et le risque d'orage/crue éclair grimpe en général plus tard dans la journée.",
+      "Si vous adorez The Narrows, vous pouvez pousser jusqu'à 2h30-3h dans l'eau en réduisant la part des Emerald Pools — à décider sur place selon l'envie du groupe.",
+      "En septembre après un été sec, les cascades des Emerald Pools sont souvent discrètes — n'en attendez pas trop, le plus intéressant reste les falaises et les points de vue."
     ]
   }
 },
