@@ -177,7 +177,7 @@ const DAYS = [
   hotel: { name: "Hôtel Kanab", link: "https://www.booking.com/Share-bdMry3i", price: "32,38 $ / pers." },
   alert: [
     { tone:"ok", title:"Upper Antelope Canyon — RÉSERVÉ", text:"Randonnée complète HG, 2 adultes, 10 septembre à 10h40, durée 170 min, 169,60 € au total. Confirmation reçue par mail (GetYourGuide). Point de rendez-vous : cherchez \"Antelope Hogan Canyon Tours\" sur Google Maps. ⚠️ Réglez votre téléphone manuellement sur l'heure de Phoenix/Arizona (il peut basculer tout seul sur l'heure Utah/Navajo Nation). Prévoyez au moins 10 $ cash à deux (5 $/pers de frais d'enregistrement) et sachez qu'aucun sac n'est autorisé dans le canyon. Vérifiez dans l'app si le permis Navajo est inclus ou à payer séparément." },
-    { tone:"rust", title:"Kayak — À RÉSERVER DE TOUTE URGENCE", text:"C'est la seule grosse réservation qui reste à verrouiller pour cette journée. Réservez chez WazSUP Kayaks (Antelope Point Launch Ramp WazSUP Kayaks Rentals) : 1× \"Sit On Top Kayak | Tandem\" pour vous deux (un seul tandem, pas deux kayaks). Environ 70 $/jour, gilets et pagaies inclus. Récupération idéale vers 14h-14h15 si le site demande une heure. Annulation gratuite jusqu'à 48h avant. Retour impératif avant 18h00 — ne visez surtout pas cette limite, prévoyez d'avoir fini vers 17h15-17h30." },
+    { tone:"ok", title:"Kayak — RÉSERVÉ", text:"WazSUP Kayaks (Antelope Point Launch Ramp WazSUP Kayaks Rentals) : 1× \"Sit On Top Kayak | Tandem\" pour vous deux. Récupération vers 14h-14h15, gilets et pagaies inclus. Retour impératif avant 18h00 — visez 17h15-17h30 pour avoir une bonne marge." },
     { tone:"mustard", title:"Piège du fuseau horaire", text:"Page/Antelope Canyon est en Arizona (pas d'heure d'été, jamais). Kanab (Utah) est à +1h en septembre. Donc 17h40 côté Arizona = 18h40 côté Utah au même instant. Page → Kanab prend 1h15-1h20 de route : en partant vers 17h40 (heure Arizona), comptez une arrivée à Kanab vers 19h55-20h10 (heure Utah)." }
   ],
   timeline: [
@@ -191,7 +191,7 @@ const DAYS = [
     { type:"hike", label:"🏜️ UPPER ANTELOPE CANYON — Randonnée complète HG", dur:"10h40 → ≈13h30 (170 min, RÉSERVÉ)", desc:"Présentation visée 10h20-10h25 (l'email indique 10h40 sans besoin d'arriver 45 min avant, mais on garde de la marge). Randonnée complète avec le guide Navajo : marche jusqu'au canyon, traversée, retour à pied — pas de transfert en camion contrairement aux tours classiques. Votre passage devrait tomber près de midi, période où la lumière est la plus belle. Fin théorique 13h30, gardez en tête que ça peut glisser jusqu'à 13h40 selon le groupe.", link: gmaps("Antelope Hogan Canyon Tours"), linkText:"Ouvrir dans Maps" },
     { type:"activity", label:"Déjeuner express", dur:"13h30 → 13h50", desc:"Sandwich/wrap + chips + fruit + eau achetés le matin au Walmart, mangés près du véhicule ou en route vers Antelope Point. Pas de restaurant, pas le temps." },
     { type:"drive", label:"→ Antelope Point Public Launch Ramp", dur:"≈13h50 → 14h05", desc:"⚠️ PAS Antelope Point Marina — le point de récupération kayak est en bas du Public Launch Ramp. Entrée Glen Canyon : 30 $/véhicule sans pass, couverte par le pass America the Beautiful.", link: gmaps("Antelope Point Public Launch Ramp"), linkText:"Ouvrir dans Maps" },
-    { type:"hike", label:"🛶 LOWER ANTELOPE CANYON EN KAYAK", dur:"≈14h15 → 17h15 (À RÉSERVER)", desc:"Récupération kayak tandem + 2 pagaies + 2 gilets sur place (pas besoin de le transporter). Mise à l'eau ~14h15. Comptez 1h-1h30 à l'aller, un temps sur place pour profiter/photos, puis 1h-1h30 au retour — le vent peut forcir l'après-midi, gardez de la marge. Vous entrez par l'eau dans la partie basse de Lower Antelope Canyon : une expérience différente de la visite pédestre classique." },
+    { type:"hike", label:"🛶 LOWER ANTELOPE CANYON EN KAYAK", dur:"≈14h15 → 17h15 (RÉSERVÉ)", desc:"Récupération kayak tandem + 2 pagaies + 2 gilets sur place (pas besoin de le transporter). Mise à l'eau ~14h15. Comptez 1h-1h30 à l'aller, un temps sur place pour profiter/photos, puis 1h-1h30 au retour — le vent peut forcir l'après-midi, gardez de la marge. Vous entrez par l'eau dans la partie basse de Lower Antelope Canyon : une expérience différente de la visite pédestre classique." },
     { type:"activity", label:"Restitution du kayak", dur:"17h15 → 17h30", desc:"Retour au même Antelope Point Public Launch Ramp : sortez le kayak de l'eau, remontez/portez-le jusqu'à la zone de restitution (\"drop off area\"), rendez kayak + pagaies + gilets à WazSUP. Vous ne retournez ni à leur bureau de Page, ni à Antelope Point Marina. Limite absolue : 18h00 — vous visez d'avoir terminé bien avant." },
     { type:"drive", label:"→ Kanab (Utah)", dur:"≈17h40 (AZ) → 19h55-20h10 (UT)", desc:"Séchage rapide, changement de vêtements, rangement, départ. Page → Kanab : 1h15-1h20 de route. N'oubliez pas le décalage horaire (+1h en arrivant en Utah) — voir l'alerte ci-dessus.", link: gmaps("37°4'47.2\"N 112°33'57.2\"W"), linkText:"Itinéraire Google Maps" },
     { type:"sleep", label:"Dodo — Kanab", dur:"", desc:"Réservé.", link:"https://www.booking.com/Share-bdMry3i", linkText:"Voir la réservation" }
@@ -203,7 +203,7 @@ const DAYS = [
     duration: "Upper Antelope : 170 min (10h40-13h30) · Kayak : ~3h (14h15-17h15)",
     water: "Emportez plusieurs litres d'eau pour la journée entière — rien à l'intérieur du canyon lui-même, et vous serez en plein soleil sur le lac une bonne partie du kayak.",
     gear: "Upper Antelope : chaussures adaptées, eau, téléphone/appareil photo, au moins 10 $ cash à deux (frais d'enregistrement 5 $/pers) — aucun sac autorisé dans le canyon. Kayak : sandales/chaussures d'eau, tenue légère + rechange, serviette, crème solaire, casquette bien attachée, housse étanche pour le téléphone si fournie par le loueur.",
-    reservation: "Upper Antelope Canyon : RÉSERVÉ (GetYourGuide, 10h40). Kayak WazSUP : à réserver d'urgence, tandem unique, retour impératif avant 18h00 — voir les alertes ci-dessus.",
+    reservation: "Upper Antelope Canyon : RÉSERVÉ (GetYourGuide, 10h40). Kayak WazSUP : RÉSERVÉ (tandem, récupération ~14h-14h15, retour avant 18h00).",
     tips: [
       "Réglez votre téléphone manuellement sur l'heure de Phoenix avant le rendez-vous Upper Antelope : il peut basculer tout seul sur l'heure Utah/Navajo Nation et vous mettre en retard sans vous en rendre compte.",
       "Le parking de Horseshoe Bend n'est PAS couvert par le pass America the Beautiful (géré par la ville de Page, pas par le NPS).",
@@ -264,45 +264,80 @@ const DAYS = [
 // ---------------------------------------------------------------- JOUR 8
 {
   id: 8, date: "12 sept.", weekday: "Samedi", region: "Nevada",
-  title: "Excursion à la Valley of Fire",
-  wake: "6h30", wakeType:"calc",
-  wakeReason: "1h10 de route depuis Las Vegas. Partir avant que la chaleur ne monte (souvent dès 10h-11h en septembre) permet de profiter des sentiers (Fire Wave, White Domes) dans de bonnes conditions et d'être de retour à Vegas pour l'après-midi.",
-  breakfast: { included:false, note:"Pas de petit-déjeuner inclus au Luxor — comptez sur un café/resto du Strip ou de l'hôtel (payant), ou emportez de quoi grignoter avant de partir pour Valley of Fire." },
+  title: "Valley of Fire Express + Las Vegas (piscine, Strip, Bellagio)",
+  wake: "6h45", wakeType:"calc",
+  wakeReason: "Reste tôt pour profiter de Valley of Fire avant la chaleur et être revenus à Vegas pour le déjeuner, mais rien à voir avec un réveil à 5h — vous avez ensuite tout l'après-midi pour récupérer à la piscine. Réveil 6h45, préparation 6h45-7h10, départ du Luxor 7h15.",
+  breakfast: { included:false, note:"Pas de petit-déjeuner inclus au Luxor — de toute façon le départ est à 7h15, pas le temps pour un vrai petit-déj. Café ou snack rapide sur le pouce avant de partir, vous mangerez un vrai repas au retour (In-N-Out vers midi)." },
   photo: WIKI("Valley of Fire State Park, Nevada 01.jpg"),
   photoCap: "Valley of Fire State Park, Nevada — Wikimedia Commons",
   hotel: { name: "Las Vegas — Luxor", link: null, price: "inclus dans les 3 nuits" },
-  alert: { tone:"mustard", title:"Chaleur", text:"Début septembre au Nevada, il peut encore faire 38-40 °C dans le désert en journée. Partez tôt le matin pour profiter du parc avant la grosse chaleur, et évitez toute rando longue entre 12h et 16h." },
+  alert: [
+    { tone:"mustard", title:"Fire Wave et White Domes fermés à vos dates", text:"Ces deux trails emblématiques sont fermés en ce moment — le programme ci-dessous est donc volontairement un \"Valley of Fire Express\" en voiture avec de courts arrêts photo, sans grande randonnée, plutôt qu'une demi-journée de marche." },
+    { tone:"mustard", title:"Pas de frigo dans la chambre", text:"Votre chambre Luxor (Pyramid Premier Two Queen) n'a pas de frigo inclus (location possible à 25 $/nuit). Donc pas de \"sandwichs achetés au supermarché et stockés 2 jours\" sans glacière — en revanche rien n'empêche d'acheter à manger et de le consommer le soir même (le Luxor Market, près du passage vers Excalibur, est ouvert 6h-1h45)." }
+  ],
   timeline: [
-    { type:"drive", label:"Las Vegas → Valley of Fire", dur:"1 h 10", desc:"", link: gmaps("36°22'39.2\"N 115°9'17.7\"W"), linkText:"Itinéraire Google Maps" },
-    { type:"hike", label:"Valley of Fire State Park", dur:"Demi-journée", desc:"Formations de grès rouge spectaculaires (le plus vieux parc d'État du Nevada). Incontournables : Fire Wave, Mouse's Tank, White Domes. Entrée : environ 15 $/véhicule (parc d'État, le pass America the Beautiful ne s'applique pas ici non plus).", link: gmaps("Valley of Fire State Park Visitor Center"), linkText:"Ouvrir dans Maps" },
-    { type:"drive", label:"Retour Valley of Fire → Las Vegas", dur:"1 h 38", desc:"", link: gmaps("36°22'59.2\"N 115°9'19.2\"W"), linkText:"Itinéraire Google Maps" },
-    { type:"sleep", label:"Soirée libre à Las Vegas", dur:"", desc:"Le Strip, un show, un restaurant à thème... Si vous voulez un spectacle ou une table dans un lieu couru, réservez dès maintenant, certains shows affichent complet plusieurs jours à l'avance." }
+    { type:"activity", label:"Réveil + préparation", dur:"6h45 → 7h10", desc:"Café ou snack rapide, pas de vrai petit-déjeuner ce matin." },
+    { type:"drive", label:"Départ du Luxor → Valley of Fire (entrée Ouest)", dur:"7h15 → ≈8h15", desc:"", link: gmaps("Valley of Fire State Park West Entrance"), linkText:"Itinéraire Google Maps" },
+    { type:"hike", label:"Beehives", dur:"8h20 → 8h30", desc:"Formations de grès arrondies et striées, arrêt photo rapide juste après l'entrée." },
+    { type:"drive", label:"Mouse's Tank Road / White Domes Road + arrêts photos", dur:"8h40 → 9h15", desc:"La route elle-même est le clou du spectacle ici : formations rouges spectaculaires défilant des deux côtés, plusieurs pull-outs pour s'arrêter." },
+    { type:"activity", label:"Rainbow Vista", dur:"9h15 → 9h35", desc:"Point de vue sur un dégradé de couleurs dans la roche (rouge, rose, blanc, jaune) — un des plus beaux arrêts rapides du parc.", link: gmaps("Rainbow Vista Valley of Fire"), linkText:"Ouvrir dans Maps" },
+    { type:"activity", label:"Fire Canyon / Silica Dome", dur:"9h40 → 9h55", desc:"Vue plongeante sur un canyon de grès rouge intense.", link: gmaps("Fire Canyon Silica Dome Overlook"), linkText:"Ouvrir dans Maps" },
+    { type:"activity", label:"Elephant Rock", dur:"≈10h15 → 10h30", desc:"Arche rocheuse en forme de tête d'éléphant, courte marche depuis le petit parking.", link: gmaps("Elephant Rock Valley of Fire"), linkText:"Ouvrir dans Maps" },
+    { type:"drive", label:"Sortie Est du parc → retour secteur Luxor", dur:"≈10h30 → 11h40-12h00", desc:"" },
+    { type:"activity", label:"Déjeuner — In-N-Out Burger", dur:"≈11h50 → 12h25", desc:"Dean Martin Drive, juste à l'ouest du Strip, pratique en revenant par l'I-15. Pas cher, rapide, et suffisamment iconique pour un road trip américain — pas la peine de viser un \"restaurant mythique de Vegas\" à midi, ça ferait perdre l'intérêt du programme express.", link: gmaps("In-N-Out Burger Dean Martin Drive Las Vegas"), linkText:"Ouvrir dans Maps" },
+    { type:"activity", label:"Retour au Luxor", dur:"≈12h35 → 13h00", desc:"Douche rapide, maillot, crème solaire — vous ne pensez plus au programme pendant quelques heures." },
+    { type:"activity", label:"Piscine + chill — Luxor Oasis Pool", dur:"13h00 → 15h15", desc:"Ouverte 9h-19h tous les jours, sièges gratuits pour les clients dans la limite des disponibilités. La vraie pause récup après Zion la veille et Valley of Fire ce matin.", link: gmaps("Luxor Oasis Pool Las Vegas"), linkText:"Ouvrir dans Maps" },
+    { type:"activity", label:"Douche / préparation", dur:"15h15 → 15h45", desc:"Retour chambre, douche, changement — départ vers 16h, pas d'obligation de tenir pile cette heure-là." },
+    { type:"activity", label:"New York-New York", dur:"16h00 → 16h45", desc:"À pied depuis le Luxor, en traversant rapidement Excalibur. 30-40 min pour traverser le casino, voir les décors NYC, la Statue of Liberty/façade, profiter de l'ambiance — pas besoin du roller coaster sauf si l'envie est là.", link: gmaps("New York-New York Hotel and Casino"), linkText:"Ouvrir dans Maps" },
+    { type:"drive", label:"Remontée tranquille du Strip vers Bellagio", dur:"≈16h45 → 17h15", desc:"À pied, sans obligation de \"visiter\" chaque hôtel sur le chemin." },
+    { type:"activity", label:"Bellagio Conservatory & Botanical Gardens", dur:"17h15 → 18h00", desc:"Bonne raison de le faire précisément ce jour-là : le décor d'été 2026 \"Paradise: Nature's Most Beautiful Creations\" se termine le 12 septembre — vous y êtes le dernier jour. Accès gratuit, ouvert 24h/24. 17h15-17h45 : lobby, plafond Chihuly, Conservatory. 17h45-18h : casino/intérieur Bellagio.", link: gmaps("Bellagio Conservatory Botanical Gardens"), linkText:"Ouvrir dans Maps" },
+    { type:"activity", label:"Fontaines du Bellagio", dur:"18h00 / 18h30", desc:"Le samedi, spectacle toutes les 30 min de midi à 19h puis toutes les 15 min après 19h. Gratuit — largement suffisant comme grosse attraction de l'après-midi.", link: gmaps("Bellagio Fountains Las Vegas"), linkText:"Ouvrir dans Maps" },
+    { type:"activity", label:"Dîner — Secret Pizza (ou repas budget)", dur:"18h30 → 19h30", desc:"Depuis Bellagio, direction le Cosmopolitan : Secret Pizza, petite pizzeria cachée au 3e étage du Boulevard Tower, sans grosse enseigne, pizza new-yorkaise à la part, ouverte tard. Option plus économique : sandwich/snack au Luxor Market (6h-1h45), à manger le soir même vu l'absence de frigo en chambre.", link: gmaps("Secret Pizza The Cosmopolitan Las Vegas"), linkText:"Ouvrir dans Maps" },
+    { type:"sleep", label:"Soirée libre à Las Vegas", dur:"Après 19h30", desc:"Rien de programmé volontairement : casino, un verre, retour au Luxor, continuer à marcher sur le Strip, dormir... Aucune heure de coucher imposée, le lendemain (13 sept.) est votre vraie journée 100% Vegas (Venetian, Caesars, Wynn/Sphere, Fremont Street, éventuellement Peppermill)." }
   ],
   highlight: {
-    name: "Fire Wave & White Domes (Valley of Fire)",
-    difficulty: "easy", diffLabel: "Facile",
-    distance: "Fire Wave : ~2 km A/R · White Domes Loop : ~2 km",
-    duration: "1 à 2 h au total pour les deux",
-    water: "Aucun point d'eau dans le parc — partez avec toutes vos réserves (minimum 1,5 L/pers pour la demi-journée).",
-    gear: "Chapeau, crème solaire, chaussures de marche légères — sentiers courts et faciles mais très exposés au soleil.",
-    reservation: "Aucune réservation nécessaire, juste l'entrée à payer au poste (cash conseillé).",
-    tips: ["Vue superbe sur Lake Mead depuis la route d'accès.", "Un léger 4x4 n'est pas nécessaire, une berline classique passe partout dans le parc."]
+    name: "Valley of Fire Express (en voiture)",
+    difficulty: "easy", diffLabel: "Très facile — pas de vraie randonnée",
+    distance: "Quelques centaines de mètres à chaque arrêt (Beehives, Rainbow Vista, Fire Canyon/Silica Dome, Elephant Rock)",
+    duration: "≈2h15 sur place (8h15-10h30) + 2×1h de route",
+    water: "Aucun point d'eau dans le parc — partez avec vos réserves (1-1,5 L/pers suffisent pour ce format express, sans grande marche).",
+    gear: "Chapeau, crème solaire — sentiers très courts et exposés mais aucune marche longue aujourd'hui, Fire Wave et White Domes étant fermés.",
+    reservation: "Aucune réservation nécessaire, juste l'entrée à payer au poste (cash conseillé). Bellagio Conservatory et fontaines : gratuits, sans réservation.",
+    tips: [
+      "Fire Wave et White Domes sont fermés à vos dates : ce format \"express en voiture\" avec arrêts courts est donc le bon choix, pas une demi-mesure.",
+      "Le format de la journée (retour avant le déjeuner + vraie pause piscine) est pensé pour ne pas cumuler la fatigue de Zion la veille — gardez cet équilibre plutôt que d'essayer de tout faire.",
+      "Bellagio Conservatory : vous tombez pile le dernier jour du décor d'été \"Paradise\" (se termine le 12 septembre) — bon timing à ne pas manquer.",
+      "Chambre Luxor sans frigo : n'achetez de quoi manger que pour le consommer le soir même, sauf si vous avez une glacière avec vous.",
+      "Le vrai \"restaurant mythique\" de Vegas (Peppermill Restaurant and Fireside Lounge, néon/Old Vegas depuis 1972) est plutôt à caser le lendemain (13 sept.), trop excentré pour cette journée express."
+    ]
   }
 },
 // ---------------------------------------------------------------- JOUR 9
 {
   id: 9, date: "13 sept.", weekday: "Dimanche", region: "Nevada",
-  title: "Journée libre à Las Vegas",
-  wake: "Grasse matinée", wakeType:"free",
-  wakeReason: "Journée 100% libre, aucune contrainte — largement mérité après plusieurs matinées matinales. Faites la grasse matinée sans remords.",
-  breakfast: { included:false, note:"Pas de petit-déjeuner inclus au Luxor — débrouillez-vous en ville (énormément de choix sur le Strip) ou au buffet de l'hôtel (payant)." },
+  title: "Las Vegas — Strip, hôtels mythiques, Fremont & casinos",
+  wake: "9h00", wakeType:"free",
+  wakeReason: "Journée 100% Vegas, réveil tranquille sans contrainte — 9h00-9h30, douche, préparation, et vous descendez directement dans le casino du Luxor.",
+  breakfast: { included:false, note:"Petit-déjeuner \"décidé par le casino\" ce matin (voir alerte ci-dessous) — pas de petit-déj classique inclus au Luxor. Dans tous les cas, gardez de la place : le vrai brunch au Peppermill est prévu vers 11h." },
   photo: WIKI("Las Vegas Strip at sunset.JPG"),
   photoCap: "Las Vegas Strip — Wikimedia Commons",
-  hotel: { name: "Las Vegas — Luxor", link: null, price: "inclus" },
-  alert: null,
+  hotel: { name: "Las Vegas — Luxor", link: null, price: "inclus (3e et dernière nuit)" },
+  alert: [
+    { tone:"mustard", title:"Règle du matin : 20 $ chacun, pas un cent de plus", text:"9h30-10h00, casino du Luxor : 20 $ maximum par personne (machines à sous, roulette électronique, blackjack électronique). Si les 20 $ disparaissent, terminé — pas de \"encore 20 $ pour se refaire\". 🟢 Positifs : petit-déjeuner léger autorisé au Luxor (café, viennoiserie, fruit, bagel — restez léger, Peppermill arrive à 11h). 🔴 Perdus : pas de petit-déj payant, vous patientez jusqu'à Peppermill." },
+    { tone:"mustard", title:"Règle du soir : budget casino fixe", text:"Définissez une limite avant de commencer, par exemple 50 $ chacun pour toute la soirée (à prendre en cash pour que la limite soit simple à suivre). Perdu = stop pour la soirée. Si vous montez à 80 $, mettez les 30 $ de gain de côté et continuez uniquement avec la mise de départ. Le casino reste une activité du voyage, pas un budget qui déborde sur les jours suivants." }
+  ],
   timeline: [
-    { type:"activity", label:"Journée libre", dur:"Journée", desc:"Le Strip de jour et de nuit, Fremont Street Experience (centre historique, spectacle de lumières gratuit toutes les heures le soir), piscine à l'hôtel, casinos, ou une excursion optionnelle (Hoover Dam à ~45 min si vous voulez varier)." },
-    { type:"sleep", label:"Dodo — Las Vegas (Luxor)", dur:"", desc:"Dernière nuit sur place." }
+    { type:"activity", label:"Réveil tranquille", dur:"9h00 → 9h30", desc:"Pas de réveil agressif aujourd'hui : douche, préparation, puis direction le casino du Luxor." },
+    { type:"activity", label:"Challenge petit-déj — casino du Luxor", dur:"9h30 → 10h00", desc:"20 $ chacun maximum. Voir la règle complète dans l'alerte ci-dessus — le résultat détermine simplement si vous prenez un petit-déj léger au Luxor ou si vous patientez jusqu'à Peppermill." },
+    { type:"activity", label:"Welcome to Fabulous Las Vegas Sign", dur:"10h15 → 10h40", desc:"Juste au sud du Luxor. 20-25 min max, quelques photos et vous repartez — si c'est bondé, une photo légèrement décalée suffit, inutile de perdre 45 min pour être parfaitement centrés.", link: gmaps("Welcome to Fabulous Las Vegas Sign"), linkText:"Ouvrir dans Maps" },
+    { type:"activity", label:"🍳 Peppermill Restaurant & Fireside Lounge — TOUJOURS prévu", dur:"11h00 → 12h15", desc:"Casino gagné ou perdu, vous y allez dans tous les cas : énorme décor néon, banquettes américaines, ambiance old-school, Fireside Lounge, grosses portions. Comptez 20-35 $/pers selon la commande. Le repas un peu emblématique de Las Vegas.", link: gmaps("Peppermill Restaurant and Fireside Lounge Las Vegas"), linkText:"Ouvrir dans Maps" },
+    { type:"activity", label:"Wynn Las Vegas", dur:"12h20 → 13h15", desc:"Le Vegas ultra-luxe : fleurs, grands halls, décor, boutiques, casino. 45-55 min suffisent, pas la peine d'y passer deux heures — gardez le vrai budget casino pour ce soir.", link: gmaps("Wynn Las Vegas"), linkText:"Ouvrir dans Maps" },
+    { type:"activity", label:"Venetian + Grand Canal", dur:"13h20 → 14h40", desc:"Incontournable pour une première visite à Vegas : façade inspirée de Venise, place Saint-Marc, plafonds peints, canaux, gondoles, Grand Canal Shoppes, casino. La visite de l'hôtel est déjà une attraction en soi, pas besoin de payer une balade en gondole sauf réelle envie.", link: gmaps("The Venetian Resort Las Vegas"), linkText:"Ouvrir dans Maps" },
+    { type:"activity", label:"Sphere (extérieur)", dur:"14h45 → 15h15", desc:"Juste à côté du Venetian. Objectif : voir la Sphere de l'extérieur, regarder les animations, quelques photos. 30 min max, pas d'attraction payante obligatoire.", link: gmaps("Sphere Las Vegas"), linkText:"Ouvrir dans Maps" },
+    { type:"activity", label:"Retour Luxor + gros chill", dur:"15h30 → 18h00", desc:"Stop visites, vous en avez déjà fait suffisamment aujourd'hui. 15h30-16h retour Luxor → 16h-17h30 piscine/sieste/chambre → 17h30-18h douche + préparation soirée. Le but est d'arriver frais pour la soirée casino, pas de forcer le programme." },
+    { type:"activity", label:"🌃 OPTION A — Fremont Street + casinos Downtown", dur:"18h15 → 23h00", desc:"Pour les motivés. Uber/Lyft plutôt que la voiture (pas de parking à gérer, on peut boire tranquillement). 18h45-19h30 : premier tour de Fremont Street (Golden Nugget → Binion's → Four Queens → The D → Plaza, sans circuit strict) sous le plafond Viva Vision (gratuit, plusieurs shows dans la soirée). 19h30-20h : dîner à Evel Pie (pizza à la part sur Fremont, 10-20 $/pers) ou solution encore plus économique (sandwich/snack/fast-food). 20h-23h : soirée casino Downtown en alternant Golden Nugget → Binion's (ambiance historique/Old Vegas) → Four Queens ou The D, entrecoupée de passages sous Viva Vision. Retour Luxor vers 23h en Uber." },
+    { type:"activity", label:"🎰 OPTION B — Soirée 100% Luxor (flemme totale, totalement valide)", dur:"18h00 → 22h30+", desc:"Si à 18h vous êtes rincés et n'avez aucune envie de reprendre un Uber : 18h-19h dîner sur place (sandwich/fast-food), 19h-19h30 petit tour du casino, 19h30-22h30 vraie soirée casino au Luxor, puis bar/chambre ou vous continuez si vous êtes bien. Avantages : zéro Uber, zéro temps perdu, vous remontez en chambre quand vous voulez. Inconvénient : vous ratez l'ambiance très différente de Fremont Street." },
+    { type:"sleep", label:"Dodo — Las Vegas (Luxor)", dur:"", desc:"3e et dernière nuit. Réservé." }
   ],
   highlight: null
 },
@@ -503,7 +538,7 @@ const RESERVATIONS = [
   { date:"8 → 9 sept.", label:"Hôtel Tusayan", link:"https://www.booking.com/Share-mp0o9Ru", done:true, price:"85 $" },
   { date:"9 → 10 sept.", label:"Hôtel Page", link:"https://www.booking.com/Share-GNo6a7", done:true, price:"24,04 $" },
   { date:"10 sept.", label:"Antelope Canyon — Upper (randonnée complète HG, GetYourGuide)", link:null, done:true, price:"169,60 € / 2 pers." },
-  { date:"10 sept.", label:"Antelope Canyon — kayak (WazSUP Kayaks, tandem)", link:"https://wazsupkayaks.com/rentals/", done:false, price:"≈70 $/jour", urgent:true },
+  { date:"10 sept.", label:"Antelope Canyon — kayak (WazSUP Kayaks, tandem)", link:"https://wazsupkayaks.com/rentals/", done:true, price:"≈70 $/jour" },
   { date:"10 → 11 sept.", label:"Hôtel Kanab", link:"https://www.booking.com/Share-bdMry3i", done:true, price:"32,38 $" },
   { date:"11 → 14 sept.", label:"Hôtel Las Vegas (Luxor)", link:null, done:true, price:"245,50 $" },
   { date:"14 → 15 sept.", label:"Hôtel Lindsay", link:"https://www.booking.com/Share-Q6a43Ew", done:true, price:"43 $" },
