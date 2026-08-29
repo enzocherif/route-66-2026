@@ -344,85 +344,144 @@ const DAYS = [
 // ---------------------------------------------------------------- JOUR 10
 {
   id: 10, date: "14 sept.", weekday: "Lundi", region: "Nevada → Californie",
-  title: "Death Valley",
-  wake: "6h00", wakeType:"calc",
-  wakeReason: "Deux raisons de ne pas trainer : 2h12 de route pour arriver à Badwater Basin avant le plus fort de la chaleur (l'endroit le plus chaud d'Amérique du Nord), puis une très longue étape de 4h59 l'après-midi jusqu'à Lindsay. Partir tôt évite de cumuler chaleur et fatigue de conduite en fin de journée.",
-  breakfast: { included:false, note:"Pas de petit-déjeuner inclus au Luxor — prévoyez d'acheter de quoi manger/grignoter avant la longue route vers Death Valley (peu d'options une fois dans le désert)." },
+  title: "Death Valley — traversée du parc vers Lindsay",
+  wake: "7h15", wakeType:"calc",
+  wakeReason: "Après deux soirées à Las Vegas, un réveil à 6h serait inutilement violent. Réveil 7h15, checkout tranquille, objectif de ne pas dépasser 8h au départ du Luxor — au-delà, la journée devient vraiment longue jusqu'à Lindsay (voir alerte sur les seuils horaires).",
+  breakfast: { included:false, note:"Pas de petit-déjeuner à Vegas ce matin — direction le Walmart Supercenter de Pahrump (300 S Highway 160, ouvert 6h-23h) pour un petit-déj simple sur place (café, viennoiseries, bagel, fruits) et le gros ravitaillement Death Valley en même temps. Un Subway est aussi disponible sur place dès 7h si vous préférez plus consistant." },
   photo: WIKI("Boardwalk at Badwater Basin, Death Valley National Park, California.jpg"),
   photoCap: "Badwater Basin, Death Valley — Wikimedia Commons",
   hotel: { name: "Hôtel Lindsay", link: "https://www.booking.com/Share-Q6a43Ew", price: "43 $ / pers." },
-  alert: { tone:"rust", title:"Chaleur extrême", text:"Death Valley est l'endroit le plus chaud d'Amérique du Nord — encore 38-43 °C facilement en septembre. Vérifiez le niveau d'essence et l'état de la clim avant d'entrer dans le parc (peu de stations sur la route), emportez largement plus d'eau que d'habitude, et limitez toute marche à moins de 20-30 min en pleine journée." },
+  alert: [
+    { tone:"rust", title:"Chaleur extrême — Death Valley ne pardonne pas", text:"En septembre, le maximum moyen historique à Furnace Creek tourne autour de 41°C (106°F). Sorties de voiture courtes uniquement à partir de Zabriskie Point : Badwater Basin se limite à 20-30 min dehors grand maximum (réduisez à 10-15 min si la voiture affiche 45°C ou plus), aucune randonnée dans les dunes de Mesquite Flat. Le NPS recommande au moins 4 L d'eau par personne et par jour, plus une réserve en cas de panne — visez 10-12 L disponibles dans la voiture pour vous deux. Vérifiez les conditions/restrictions sur le site du NPS juste avant le départ, elles peuvent changer rapidement après un orage." },
+    { tone:"mustard", title:"Règle selon l'heure de départ du Luxor", text:"✅ Départ avant 8h → programme complet. 🟠 Départ 8h-8h30 → encore faisable, mais soyez efficaces sur chaque arrêt. 🔴 Départ après 8h30 → supprimez Mesquite Flat Sand Dunes plutôt que de courir toute la journée et d'arriver à Lindsay à 22h. Mieux vaut faire Zabriskie + Badwater + Artists Palette correctement que tout vouloir caser." }
+  ],
   timeline: [
-    { type:"drive", label:"Las Vegas → Death Valley", dur:"2 h 12", desc:"", link: gmaps("36°20'52.8\"N 117°3'56.0\"W"), linkText:"Itinéraire Google Maps" },
-    { type:"hike", label:"Death Valley — Furnace Creek / Badwater Basin", dur:"2-3 h", desc:"Badwater Basin : le point le plus bas d'Amérique du Nord (-86 m), étendue de sel à perte de vue, marche facile sur le boardwalk puis sur le sel. Zabriskie Point pour un panorama sur les badlands si vous avez le temps.", link: gmaps("Badwater Basin Death Valley"), linkText:"Ouvrir dans Maps" },
-    { type:"drive", label:"Death Valley → Lindsay", dur:"4 h 59", desc:"Longue route de fin de journée, prévoir des pauses fréquentes.", link: gmaps("35°51'41.1\"N 119°25'41.1\"W"), linkText:"Itinéraire Google Maps" },
-    { type:"sleep", label:"Dodo — Lindsay", dur:"", desc:"Réservé.", link:"https://www.booking.com/Share-Q6a43Ew", linkText:"Voir la réservation" }
+    { type:"activity", label:"Réveil + checkout Luxor", dur:"7h15 → 7h45", desc:"Douche rapide, affaires dans la voiture, checkout définitif. Pas de petit-déjeuner à Vegas — direction Pahrump par NV-160." },
+    { type:"drive", label:"Las Vegas → Walmart Supercenter Pahrump", dur:"7h45 → ≈8h50 (1h-1h10)", desc:"300 S Highway 160, Pahrump — ouvert tous les jours 6h-23h.", link: gmaps("Walmart Supercenter 300 S Highway 160 Pahrump NV"), linkText:"Ouvrir dans Maps" },
+    { type:"activity", label:"Petit-déj + gros ravitaillement Death Valley", dur:"8h50 → 9h35 (40-45 min)", desc:"Dernier arrêt logistique avant le désert. Petit-déj simple sur place (café, viennoiseries/muffins, bagel, fruits, jus). Ravitaillement : gourdes remplies + stock d'eau visant 10-12 L dans la voiture, sac de glace pour la glacière (boissons, sandwichs, fruits à remettre au frais), 2 sandwichs/wraps par personne pour le midi (rayon deli sur place) + fruits, crackers, noix, barres, électrolytes, quelques boissons froides. Vous ne cherchez aucun restaurant dans Death Valley aujourd'hui." },
+    { type:"activity", label:"Plein d'essence", dur:"≈9h35 → 9h45", desc:"Plein complet avant de quitter Pahrump, même avec un demi-réservoir — ne comptez pas sur Death Valley pour trouver de l'essence à bon prix." },
+    { type:"drive", label:"Pahrump → Zabriskie Point", dur:"≈9h45 → 11h00", desc:"Entrée progressive dans le désert via Death Valley Junction et CA-190. Clim, eau, musique — pas de raison de se presser sur cette portion.", link: gmaps("Zabriskie Point Death Valley"), linkText:"Ouvrir dans Maps" },
+    { type:"activity", label:"Zabriskie Point", dur:"11h00 → 11h25", desc:"Très peu de marche : parking → courte montée goudronnée → panorama sur les badlands jaunes et bruns caractéristiques de Death Valley. Il fera déjà chaud à cette heure — aucune randonnée supplémentaire ici." },
+    { type:"drive", label:"Zabriskie → Badwater Basin", dur:"11h25 → ≈12h00", desc:"Vous descendez au fond de Death Valley, la température monte nettement. À partir de maintenant : sorties de voiture courtes uniquement." },
+    { type:"activity", label:"Badwater Basin", dur:"12h00 → 12h35", desc:"-86 m sous le niveau de la mer, le point le plus bas d'Amérique du Nord — et vous y êtes probablement au pire moment niveau chaleur. Pas de 800 m ni 3 km aujourd'hui : sortez juste du boardwalk, marchez un peu sur le sel, photos, et c'est tout. 20-30 min dehors grand maximum, réduisez à 10-15 min si la voiture affiche 45°C+.", link: gmaps("Badwater Basin Death Valley"), linkText:"Ouvrir dans Maps" },
+    { type:"drive", label:"Badwater → Artists Drive", dur:"12h35 → ≈12h50", desc:"Le meilleur rapport spectacle/marche de la journée arrive." },
+    { type:"activity", label:"Artists Drive + Artists Palette", dur:"12h50 → 13h35", desc:"Route panoramique à sens unique de 9 miles/14,5 km entre les formations rocheuses. Arrêt principal à Artists Palette : 10-15 min dehors pour les photos des montagnes aux couleurs vert/violet/jaune/rouge/rose, puis retour dans la clim.", link: gmaps("Artists Palette Death Valley"), linkText:"Ouvrir dans Maps" },
+    { type:"activity", label:"Pique-nique — Furnace Creek Visitor Center", dur:"13h45 → 14h20", desc:"Sandwichs achetés au Walmart, boissons de la glacière, eau, électrolytes. Toilettes, climatisation et possibilité de remplir les bouteilles sur place — le bon endroit pour récupérer après plusieurs arrêts dans la chaleur. 30-35 min, pas de restaurant à chercher.", link: gmaps("Furnace Creek Visitor Center Death Valley"), linkText:"Ouvrir dans Maps" },
+    { type:"drive", label:"Furnace Creek → Mesquite Flat Sand Dunes", dur:"14h20 → ≈14h50", desc:"CA-190 vers l'ouest — c'est aussi le début de la route naturelle vers Lindsay." },
+    { type:"activity", label:"Mesquite Flat Sand Dunes", dur:"14h50 → 15h10", desc:"Très court : parking → quelques dizaines/centaines de mètres maximum → photos des dunes avec les montagnes derrière → voiture. Aucune randonnée dans les dunes à cette heure-là en septembre. 15-20 min et c'est terminé pour Death Valley — vous aurez vu Zabriskie, Badwater, Artists Drive/Palette, Furnace Creek et les dunes.", link: gmaps("Mesquite Flat Sand Dunes Death Valley"), linkText:"Ouvrir dans Maps" },
+    { type:"drive", label:"Départ pour Lindsay", dur:"≈15h10 → 20h-20h30", desc:"Environ 5h de route, plus les pauses. Vers 17h-17h30, vraie pause de 10-15 min (toilettes, café, marcher un peu) — changez de conducteur si l'un de vous fatigue. Une arrivée à 20h-20h30 est tout à fait normale : Lindsay n'est qu'une étape dodo avant Sequoia, pas besoin d'arriver à 18h.", link: gmaps("35°51'41.1\"N 119°25'41.1\"W"), linkText:"Itinéraire Google Maps" },
+    { type:"sleep", label:"Dodo — Lindsay", dur:"", desc:"Réservé. Dîner rapide si besoin, douche, hydratation, sommeil — pas d'activité à chercher ce soir. Le lendemain : Sequoia National Park.", link:"https://www.booking.com/Share-Q6a43Ew", linkText:"Voir la réservation" }
   ],
   highlight: {
-    name: "Badwater Basin",
-    difficulty: "easy", diffLabel: "Facile (mais chaleur extrême)",
-    distance: "Jusqu'à ~3 km A/R sur le sel si vous marchez loin",
-    duration: "30 min à 1 h",
-    water: "Aucun point d'eau — la règle NPS est d'emporter au minimum 4 L d'eau par personne pour toute activité en extérieur ici en été/début d'automne.",
-    gear: "Lunettes de soleil (réverbération très forte sur le sel blanc), chapeau, chaussures fermées (le sel peut être coupant), crème solaire indice élevé.",
+    name: "Zabriskie Point → Badwater Basin → Artists Drive → Mesquite Flat Dunes",
+    difficulty: "easy", diffLabel: "Facile, mais chaleur extrême — arrêts volontairement courts",
+    distance: "Quelques dizaines à quelques centaines de mètres à chaque arrêt, aucune vraie randonnée aujourd'hui",
+    duration: "≈4h15 réparties sur la journée (11h-15h10), routes comprises",
+    water: "Minimum 4 L d'eau par personne et par jour selon le NPS, plus une réserve en cas de panne — visez 10-12 L disponibles dans la voiture pour vous deux, remplis/rechargés au Walmart de Pahrump.",
+    gear: "Lunettes de soleil (réverbération très forte sur le sel de Badwater), chapeau, chaussures fermées, crème solaire indice élevé, glacière rechargée en glace le matin même.",
     reservation: "Aucune, entrée incluse dans le pass America the Beautiful ou payable au poste (~30 $/véhicule).",
-    tips: ["Ne laissez jamais un animal ou un enfant seul dans la voiture, même quelques minutes.", "Le matin tôt ou la fin d'après-midi sont bien plus supportables que midi."]
+    tips: [
+      "Le programme est volontairement \"chill\" après deux nuits à Vegas : pas de randonnée nulle part aujourd'hui, uniquement des arrêts courts et climatisés entre deux.",
+      "Ne laissez jamais un animal ou un enfant seul dans la voiture, même quelques minutes.",
+      "Si le départ du Luxor dépasse 8h30, sacrifiez plutôt Mesquite Flat Dunes que de rogner sur Zabriskie/Badwater/Artists Palette.",
+      "Le Walmart de Pahrump est le dernier vrai arrêt logistique (eau, glace, nourriture, essence) avant plusieurs heures de désert — ne le zappez pas."
+    ]
   }
 },
 // ---------------------------------------------------------------- JOUR 11
 {
   id: 11, date: "15 sept.", weekday: "Mardi", region: "Californie",
-  title: "Sequoia National Forest",
-  wake: "Grasse matinée", wakeType:"free",
-  wakeReason: "Pas de vraie randonnée aujourd'hui (juste une marche facile jusqu'au General Sherman Tree), donc pas d'obligation stricte. Seule nuance : un départ pas trop tardif (avant 9h-9h30) évite de tourner pour se garer au parking du General Sherman Tree, très fréquenté en pleine journée.",
-  breakfast: { included:true, note:"Petit-déjeuner à l'Hôtel Lindsay (nuit précédente)." },
+  title: "Sequoia & Kings Canyon — Moro Rock, General Sherman & General Grant",
+  wake: "7h30", wakeType:"calc",
+  wakeReason: "Matinée relativement tranquille : vous aurez fini Death Valley assez tard la veille, donc pas de réveil à 6h. Mais pas de grasse matinée jusqu'à 10h non plus — la montée vers Giant Forest est longue et très sinueuse. Petit-déj 7h30-8h15, départ de Lindsay visé 8h15-8h30.",
+  breakfast: { included:true, note:"Petit-déjeuner à l'Hôtel Lindsay (nuit précédente) — profitez-en tranquillement (café, petit-déj, fruits) et remplissez les gourdes avant de partir." },
   photo: WIKI("General Sherman.jpg"),
   photoCap: "General Sherman Tree, Sequoia National Park — Wikimedia Commons",
   hotel: { name: "Hôtel Oakhurst", link: "https://www.booking.com/Share-k3TA9f", price: "53,55 $ / pers." },
-  alert: null,
+  alert: [
+    { tone:"ok", title:"Bonne nouvelle : pas de navette le 15 septembre", text:"Les navettes estivales de Sequoia & Kings Canyon fonctionnent seulement du 22 mai au 7 septembre 2026. Le 15 septembre, vous vous déplacez avec votre propre voiture partout dans le parc. Conditions actuellement publiées : Wolverton Road, Sherman Main Parking et Grant Tree Road tous ouverts — à revérifier juste avant le départ (incendies, fumées ou fermetures ponctuelles possibles)." },
+    { tone:"mustard", title:"Courses pour Yosemite ce soir — ne pas zapper", text:"À Oakhurst, entre l'hôtel et le dîner, prévoyez un vrai arrêt supermarché pour le déjeuner ET le petit-déjeuner du lendemain à Yosemite (le petit-déj de l'hôtel Oakhurst ne commence qu'à 7h, trop tard pour un départ à 6h30 — voir jour 12), plus fruits, snacks, eau, électrolytes et glace pour la glacière. Objectif : partir directement à Yosemite le matin sans aucun arrêt nourriture. Vons (40044 Hwy 49) a un bon rayon deli mais ferme vers 19h ; Grocery Outlet (40301 Junction Dr, jusqu'à 22h) est l'option moins chère." }
+  ],
   timeline: [
-    { type:"drive", label:"Lindsay → Sequoia National Park", dur:"45 min", desc:"", link: gmaps("36°20'42.4\"N 119°8'34.9\"W"), linkText:"Itinéraire Google Maps" },
-    { type:"hike", label:"Sequoia National Park — Giant Forest", dur:"Demi-journée", desc:"Le fameux General Sherman Tree, l'arbre le plus volumineux du monde (2200 ans, 84 m de haut). Marche facile depuis le parking principal (chemin pavé, léger dénivelé). Prolongez avec Moro Rock (escaliers taillés dans la roche, vue à 360°) si vous avez de l'énergie.", link: gmaps("General Sherman Tree Trailhead"), linkText:"Ouvrir dans Maps" },
-    { type:"drive", label:"Sequoia Park → Oakhurst", dur:"3 h 35", desc:"", link: gmaps("36°49'38.5\"N 119°58'31.2\"W"), linkText:"Itinéraire Google Maps" },
-    { type:"sleep", label:"Dodo — Oakhurst", dur:"", desc:"Réservé.", link:"https://www.booking.com/Share-k3TA9f", linkText:"Voir la réservation" }
+    { type:"activity", label:"Petit-déjeuner + checkout", dur:"7h30 → 8h15", desc:"À l'hôtel Lindsay. Toutes les valises restent dans la voiture — vous dormez à Oakhurst ce soir, pas de retour prévu." },
+    { type:"drive", label:"Lindsay → Ash Mountain Entrance", dur:"8h20 → ≈9h15", desc:"Via Three Rivers. Première partie tranquille, puis la route commence à grimper sérieusement vers la Sierra Nevada une fois dans le parc.", link: gmaps("Ash Mountain Entrance Sequoia National Park"), linkText:"Ouvrir dans Maps" },
+    { type:"drive", label:"Ash Mountain → Giant Forest", dur:"≈9h15 → 10h00 (≈45 min)", desc:"Generals Highway est très sinueuse, étroite par endroits, pleine d'épingles, avec beaucoup de dénivelé — ne vous fiez pas qu'aux kilomètres. Pas d'arrêt au Visitor Center aujourd'hui, on monte directement vers les endroits intéressants." },
+    { type:"hike", label:"Moro Rock", dur:"10h00 → 10h50", desc:"Plus de 350 marches taillées dans le granite, ~90 m de montée sur une distance très courte. Vue panoramique spectaculaire sur la Great Western Divide et la Sierra Nevada depuis le sommet. Difficulté modérée : escaliers raides, altitude, vide important par endroits (rambardes présentes). 10h00 parking → 10h05-10h25 montée → 10h25-10h35 sommet/photos → 10h35-10h50 descente.", link: gmaps("Moro Rock Sequoia National Park"), linkText:"Ouvrir dans Maps" },
+    { type:"activity", label:"Tunnel Log", dur:"10h55 → 11h15", desc:"Quelques minutes sur Crescent Meadow Road. Un séquoia tombé directement sur la route et creusé pour laisser passer les voitures dessous — pas de randonnée, juste la photo avec la voiture. 10-15 min max, très \"road trip américain\".", link: gmaps("Tunnel Log Sequoia National Park"), linkText:"Ouvrir dans Maps" },
+    { type:"hike", label:"General Sherman Tree", dur:"11h30 → 12h45", desc:"Le plus grand arbre du monde en volume. Depuis le Main Sherman Tree Parking Area, sentier d'environ 0,8 km dans un sens (~1,6 km A/R) qui descend vers l'arbre — la remontée se fait forcément au retour. Prenez le temps de regarder aussi les autres séquoias géants autour, Sherman n'est pas isolé. Pas de Congress Trail aujourd'hui (plusieurs km de plus, pas nécessaire avec General Grant prévu cet après-midi). 11h30 parking → 11h35-11h55 descente → 11h55-12h20 sur place → 12h20-12h45 remontée.", link: gmaps("General Sherman Tree Trailhead"), linkText:"Ouvrir dans Maps" },
+    { type:"activity", label:"Pique-nique — Giant Forest / Lodgepole", dur:"12h45 → 13h20", desc:"Sandwich, fruits, snacks, boisson, eau — ce qu'il reste de la glacière. ~30 min, pas de restaurant. Vous êtes en territoire d'ours : ne laissez pas de nourriture accessible ou visible, respectez les consignes de stockage du parc." },
+    { type:"drive", label:"Generals Highway vers Kings Canyon", dur:"13h20 → 14h30", desc:"Vous ne revenez PAS vers Lindsay : Ash Mountain → Giant Forest → Grant Grove → Highway 180 → Oakhurst, très peu de retour en arrière. La route entre Giant Forest et Grant Grove est déjà une attraction en soi — arrêtez-vous 5 min à un viewpoint sympa si vous en croisez un, sans obligation." },
+    { type:"hike", label:"General Grant Tree", dur:"14h30 → 15h15", desc:"Boucle aménagée d'environ 0,5 km depuis le parking. L'un des plus gros séquoias au monde, plus le Fallen Monarch (énorme séquoia tombé, on peut marcher à l'intérieur) et la Gamlin Cabin. Très faible effort pour un arrêt qui vaut vraiment le coup — pratiquement sur votre route vers Oakhurst.", link: gmaps("General Grant Tree Trail Kings Canyon"), linkText:"Ouvrir dans Maps" },
+    { type:"drive", label:"Départ pour Oakhurst", dur:"15h15 → ≈17h30 (2h-2h15)", desc:"Sortie par Big Stump Entrance → Highway 180 → Fresno → CA-41. On ne descend pas jusqu'au fond de Kings Canyon (trop de route en plus, Yosemite vous attend le lendemain). Pause café/toilettes/essence si besoin, sinon direct jusqu'à Oakhurst.", link: gmaps("36°51'39.5\"N 119°39'8.4\"W"), linkText:"Itinéraire Google Maps" },
+    { type:"activity", label:"Arrivée hôtel Oakhurst", dur:"≈17h30 → 17h45", desc:"Check-in rapide, valises déposées, toilettes — mais pas encore douche + lit, sinon vous ne ressortez plus. Il reste une mission importante : préparer Yosemite." },
+    { type:"activity", label:"Courses pour Yosemite", dur:"18h00 → 18h40", desc:"Vons (40044 Hwy 49, ouvert jusqu'à minuit, rayon deli avec sandwichs/wraps/plats préparés — le deli ferme vers 19h donc une arrivée à 18h tombe bien) ou Grocery Outlet (40301 Junction Dr, jusqu'à 22h, option plus économique). Deux objectifs en un seul arrêt : le déjeuner du lendemain à Yosemite (sandwich/wrap + fruit + chips/crackers + barre + boisson par personne, ou un plat froid type salade/bowl/wrap préparé) ET le petit-déjeuner à emporter pour le manger à Tunnel View vers 8h (bagels/muffins/viennoiseries, bananes ou fruits, café froid/boisson caféinée, jus) — l'hôtel Oakhurst ne sert le petit-déj qu'à partir de 7h, bien trop tard pour un départ à 6h30. Profitez-en aussi pour refaire le stock : eau, glaçons pour la glacière, électrolytes, canettes, fruits, noix, barres.", link: gmaps("Vons 40044 Hwy 49 Oakhurst"), linkText:"Ouvrir dans Maps" },
+    { type:"activity", label:"Dîner à Oakhurst", dur:"18h45 → 19h30", desc:"Budget conseillé : Taco Bell (40020 Hwy 49) avec des box autour de 7-9 $ et burritos/tacos entre 2 et 6 $ — chaud, rapide, moins de 10 $/pers, parfait après une journée de parc. Alternative encore plus économique : repas acheté directement pendant les courses (sandwich, wrap, salade, plat préparé), mangé à l'hôtel pour ~5-10 $/pers. Les restaurants assis du secteur tournent plutôt autour de 14-20 $/plat si vous préférez un vrai resto.", link: gmaps("Taco Bell 40020 Hwy 49 Oakhurst"), linkText:"Ouvrir dans Maps" },
+    { type:"sleep", label:"Retour hôtel — soirée tranquille", dur:"19h30 → 20h00", desc:"Douche, préparation de l'itinéraire Yosemite, chargement téléphones/powerbanks, organisation de la glacière, affaires du lendemain prêtes. Demain matin : vous prenez la glacière et vous partez directement à Yosemite, aucun arrêt nourriture nécessaire." }
   ],
   highlight: {
-    name: "General Sherman Tree",
-    difficulty: "easy", diffLabel: "Facile",
-    distance: "~0,8 à 2,5 km A/R selon le parking utilisé",
-    duration: "45 min à 1 h30",
-    water: "Peu de dénivelé, une petite bouteille suffit pour cette marche courte.",
-    gear: "Chaussures confortables, appareil photo grand angle indispensable (l'arbre ne tient pas dans le cadre autrement !).",
-    reservation: "Vérifiez avant de partir si le parc applique une restriction de circulation saisonnière sur la route de Giant Forest (système en place certaines années en haute saison) — consultez nps.gov/seki juste avant le départ.",
-    tips: ["Le parking du General Sherman Tree se remplit vite en pleine journée — un arrivée en matinée est plus tranquille.", "Combinez avec Moro Rock si le temps le permet : vue exceptionnelle sur la Sierra Nevada."]
+    name: "Moro Rock & General Sherman Tree",
+    difficulty: "moderate", diffLabel: "Moro Rock : modéré · General Sherman : facile à modéré",
+    distance: "Moro Rock : escaliers taillés dans la roche, 350+ marches sur une distance courte · General Sherman : ~1,6 km A/R (l'aller descend, le retour remonte)",
+    duration: "Moro Rock : 40-50 min · General Sherman : 1h-1h15",
+    water: "Une bouteille par personne suffit pour chacune de ces deux marches courtes, avec le reste du stock laissé dans la voiture.",
+    gear: "Chaussures confortables à bonne adhérence pour les escaliers de Moro Rock (vide important par endroits, rambardes présentes), appareil photo grand angle indispensable pour General Sherman — l'arbre ne tient pas dans le cadre autrement.",
+    reservation: "Aucune pour les deux. Pas de navette le 15 septembre (saison estivale terminée le 7 septembre) — tout se fait en voiture personnelle, parkings principaux annoncés ouverts (à revérifier juste avant le départ).",
+    tips: [
+      "Moro Rock n'est pas une petite promenade plate : escaliers raides + altitude + vide, mais les rambardes sécurisent bien le parcours.",
+      "Pas de Congress Trail aujourd'hui : avec Moro Rock, Sherman et Grant prévus, quelques km de plus ne sont pas nécessaires vu qu'il reste de la route jusqu'à Oakhurst.",
+      "Territoire d'ours à Giant Forest/Lodgepole : ne laissez jamais de nourriture accessible ou visible pendant le pique-nique.",
+      "General Grant Tree (Kings Canyon) est presque sur la route vers Oakhurst : très peu d'effort pour un arrêt qui vaut vraiment le coup, ne le zappez pas.",
+      "Le vrai objectif logistique de la soirée est les courses à Oakhurst — sans ça, le lendemain matin à Yosemite devient compliqué côté repas."
+    ]
   }
 },
 // ---------------------------------------------------------------- JOUR 12
 {
   id: 12, date: "16 sept.", weekday: "Mercredi", region: "Californie",
-  title: "Yosemite & El Capitan",
-  wake: "5h30", wakeType:"calc",
-  wakeReason: "Sans réservation d'entrée en 2026, les parkings de la vallée (dont Tunnel View et Yosemite Village) se remplissent tôt en haute saison — souvent avant 9h. Avec 1h23 de route depuis Oakhurst, un départ vers 6h garantit une arrivée avant l'affluence.",
-  breakfast: { included:true, note:"Petit-déjeuner à l'Hôtel Oakhurst (nuit précédente) — avec un départ dès 6h, vérifiez l'horaire d'ouverture en arrivant la veille." },
+  title: "Yosemite — Tunnel View, El Capitan, baignade & Glacier Point",
+  wake: "6h00", wakeType:"calc",
+  wakeReason: "Le petit-déjeuner de l'hôtel Oakhurst ne commence qu'à 7h — pas question de l'attendre. Réveil 6h00, départ 6h30. Objectif : être dans Yosemite Valley avant 9h. Aucune réservation d'entrée n'est requise en 2026, donc le flux de visiteurs n'est régulé par aucun créneau horaire — l'affluence et le stationnement se compliquent dès la matinée.",
+  breakfast: { included:false, note:"Pas de petit-déjeuner à l'hôtel Oakhurst (trop tardif). Il est acheté la veille pendant les courses à Oakhurst — voir jour 11 : bagels/muffins/viennoiseries, bananes ou fruits, café froid ou boisson caféinée, jus. Il se mange face au panorama de Tunnel View vers 8h, ce qui en fait carrément une activité du road trip plutôt qu'une simple formalité." },
   photo: WIKI("Tunnel View, Yosemite Valley, Yosemite NP - Diliff.jpg"),
   photoCap: "Tunnel View, Yosemite National Park — Wikimedia Commons",
   hotel: { name: "Hôtel Fresno", link: "https://www.booking.com/Share-6jU5jpj", price: "33,89 $ / pers." },
-  alert: { tone:"mustard", title:"Pas de réservation d'entrée en 2026, mais...", text:"Bonne nouvelle : contrairement aux étés 2024-2025, Yosemite n'exige aucune réservation d'entrée en 2026. En revanche, sans ce filtre, les parkings de la vallée se remplissent tôt (souvent avant 9h le matin en haute saison) — arrivez le plus tôt possible pour ne pas tourner en rond. Pass America the Beautiful ou paiement à l'entrée obligatoire dans tous les cas." },
+  alert: [
+    { tone:"mustard", title:"Pas de réservation d'entrée en 2026, mais...", text:"Contrairement aux étés 2024-2025, Yosemite n'exige aucune réservation d'entrée en 2026. Sans ce filtre, les parkings de la vallée se remplissent tôt (souvent avant 9h) — arrivez le plus tôt possible. Pass America the Beautiful ou paiement à l'entrée obligatoire dans tous les cas. Les navettes Valleywide (gratuites) tournent actuellement de 7h à 22h, passages toutes les 12-22 min." },
+    { tone:"rust", title:"Baignade dans la Merced : uniquement si les conditions sont bonnes", text:"La baignade est généralement autorisée dans la Merced à Cathedral Beach, mais le NPS rappelle qu'une rivière d'apparence calme peut cacher courant, eau très froide et obstacles immergés. 🟢 Eau basse + courant très calme : pieds, jambes, petite trempette (10-20 min suffisent). 🟠 Eau froide ou courant visible : pieds/jambes seulement. 🔴 Courant fort après pluie/orage : aucune baignade. Décidez sur place selon ce que vous voyez. Aucune eau potable à Cathedral Beach — arrivez avec les gourdes déjà remplies." }
+  ],
   timeline: [
-    { type:"drive", label:"Oakhurst → Yosemite / El Capitan", dur:"1 h 23", desc:"", link: gmaps("37°32'14.3\"N 119°56'27.0\"W"), linkText:"Itinéraire Google Maps" },
-    { type:"hike", label:"Tunnel View + Yosemite Valley + El Capitan", dur:"Journée", desc:"Premier arrêt : Tunnel View, le panorama d'ouverture le plus célèbre du parc (El Capitan à gauche, Half Dome au fond, la cascade Bridalveil Fall à droite). Ensuite descente dans la vallée : admirez El Capitan (paroi verticale de 900 m, spot mondial de l'escalade — scrutez la falaise aux jumelles, il y a presque toujours des grimpeurs dessus) et si le débit le permet encore en septembre, les chutes Yosemite Falls.", link: gmaps("Tunnel View Yosemite"), linkText:"Ouvrir dans Maps" },
-    { type:"drive", label:"Yosemite → Fresno", dur:"2 h 19", desc:"", link: gmaps("37°14'14.7\"N 120°34'57.3\"W"), linkText:"Itinéraire Google Maps" },
-    { type:"sleep", label:"Dodo — Fresno", dur:"", desc:"Réservé.", link:"https://www.booking.com/Share-6jU5jpj", linkText:"Voir la réservation" }
+    { type:"activity", label:"Réveil + checkout Oakhurst", dur:"6h00 → 6h30", desc:"Préparation tranquille : valises dans la voiture, gourdes, glacière avec le déjeuner ET le petit-déjeuner achetés la veille. Départ 6h30, sans attendre le petit-déj de l'hôtel (service à partir de 7h seulement)." },
+    { type:"drive", label:"Oakhurst → Tunnel View", dur:"6h30 → ≈7h45", desc:"CA-41 → South Entrance → Wawona Road. Pas de Mariposa Grove aujourd'hui : vous avez déjà fait General Sherman et General Grant la veille, pas besoin de reconsacrer des heures aux séquoias.", link: gmaps("37°32'14.3\"N 119°56'27.0\"W"), linkText:"Itinéraire Google Maps" },
+    { type:"activity", label:"🏔️ Tunnel View + petit-déjeuner", dur:"7h45 → 8h15", desc:"El Capitan, Half Dome, Bridalveil Fall et toute Yosemite Valley d'un coup en sortant du tunnel. 7h45-7h55 photos, puis 7h55-8h10 petit-déjeuner face à la vue (acheté la veille) — largement préférable au petit-déj classique de l'hôtel.", link: gmaps("Tunnel View Yosemite"), linkText:"Ouvrir dans Maps" },
+    { type:"hike", label:"Bridalveil Fall", dur:"8h20 → 8h50", desc:"Courte promenade, ~0,8 km A/R. En septembre le débit est généralement faible (Yosemite Falls est même souvent quasiment à sec à cette période). ⚠️ Pas de baignade ici, ne grimpez pas dans les rochers sous la cascade — la trempette est prévue plus tard, à la Merced.", link: gmaps("Bridalveil Fall Trailhead Yosemite"), linkText:"Ouvrir dans Maps" },
+    { type:"drive", label:"Entrée dans Yosemite Valley — parking Yosemite Village", dur:"8h50 → ≈9h05", desc:"Par Southside Drive. Une fois garés, vous ne redéplacez plus la voiture pendant plusieurs heures : navette gratuite Valleywide (7h-22h) pour tout le reste de la matinée.", link: gmaps("Yosemite Village Parking"), linkText:"Ouvrir dans Maps" },
+    { type:"hike", label:"Cook's Meadow + Sentinel Bridge", dur:"9h15 → 10h00", desc:"~1,6 km, très facile, pratiquement aucun dénivelé. Vues sur Half Dome, Sentinel Rock et les grandes parois de la vallée, puis Sentinel Bridge pour la vue emblématique sur Half Dome au-dessus de la Merced River." },
+    { type:"activity", label:"Pause — toilettes, gourdes, navette", dur:"10h00 → 10h35", desc:"Retour secteur Yosemite Village : toilettes, remplissage des gourdes (pas d'eau potable plus tard à Cathedral Beach), vérification rapide des conditions. Pas besoin de 40 min au Visitor Center. Puis navette Valleywide vers El Capitan Meadow." },
+    { type:"activity", label:"🧗 El Capitan Meadow", dur:"10h35 → 11h05", desc:"Au pied d'une paroi de plus de 900 m. Prenez jumelles ou zoom téléphone : il y a presque toujours des grimpeurs suspendus sur la paroi, invisibles à l'œil nu. 30 min suffisent.", link: gmaps("El Capitan Meadow Yosemite"), linkText:"Ouvrir dans Maps" },
+    { type:"hike", label:"🏖️ Cathedral Beach — pique-nique & trempette", dur:"11h15 → 12h15", desc:"Arrêt 10 de la navette Valleywide. Vraie plage sur la Merced avec El Capitan juste en face, tables de pique-nique et toilettes. Sortez la glacière (sandwich/wrap acheté à Oakhurst, fruit, chips, snack, boisson) et mangez au bord de l'eau. Baignade ensuite selon les conditions (voir alerte) : maillot, petite serviette, sandales/chaussures d'eau si vous en avez. Plan B si l'endroit ne convient pas : Sentinel Beach, un peu plus loin, offre le même type d'accès à la rivière.", link: gmaps("Cathedral Beach Yosemite"), linkText:"Ouvrir dans Maps" },
+    { type:"drive", label:"Retour vers Yosemite Village (navette)", dur:"12h15 → 12h45", desc:"Comptez large, 30 min environ selon l'attente et la circulation. Retour à la voiture." },
+    { type:"activity", label:"Valley View", dur:"13h00 → 13h15", desc:"Par Northside Drive, dernière belle vue de la vallée (El Capitan, Merced River, Cathedral Rocks), parfaitement placée sur la route de sortie. Si le petit parking est plein, ne perdez pas de temps à tourner, continuez.", link: gmaps("Valley View Yosemite"), linkText:"Ouvrir dans Maps" },
+    { type:"drive", label:"Vers Glacier Point Road", dur:"13h15 → 14h15", desc:"Wawona Road → Glacier Point Road. Routes toutes indiquées ouvertes (dernier état officiel du 19 août 2026, à revérifier juste avant le voyage)." },
+    { type:"activity", label:"Washburn Point", dur:"14h15 → 14h30", desc:"Arrêt simple parking → panorama : Half Dome, Vernal Fall, Nevada Fall, High Sierra. 10-15 min.", link: gmaps("Washburn Point Yosemite"), linkText:"Ouvrir dans Maps" },
+    { type:"activity", label:"🏔️ Glacier Point", dur:"14h35 → 15h20", desc:"Environ 980 m au-dessus de Curry Village, panorama immense sur Half Dome, la vallée, Vernal et Nevada Falls, la High Sierra. Courte promenade pavée depuis le parking. Un des grands moments du parc — pas de Sentinel Dome aujourd'hui, la journée est déjà bien remplie entre Cathedral Beach et Glacier Point.", link: gmaps("Glacier Point Yosemite"), linkText:"Ouvrir dans Maps" },
+    { type:"drive", label:"Glacier Point → Fresno", dur:"≈15h20 → 18h-18h30", desc:"Glacier Point Road → Wawona Road → CA-41 → Oakhurst → Fresno. Vous ne repassez pas dans Yosemite Valley. Comptez une arrivée plutôt 18h-18h30 que 17h — la pause baignade décale un peu la journée, mais ça vaut largement le coup.", link: gmaps("37°14'14.7\"N 120°34'57.3\"W"), linkText:"Itinéraire Google Maps" },
+    { type:"sleep", label:"Dodo — Fresno", dur:"", desc:"Réservé. Check-in, douche, dîner simple (fast-food/tacos ~8-15 $/pers, ou restes de la glacière) — pas de tourisme nécessaire à Fresno, le lendemain c'est la route vers Los Angeles.", link:"https://www.booking.com/Share-6jU5jpj", linkText:"Voir la réservation" }
   ],
   highlight: {
-    name: "Tunnel View & Yosemite Valley",
-    difficulty: "easy", diffLabel: "Facile (point de vue en voiture)",
-    distance: "Point de vue directement accessible en voiture ; comptez 2-5 km de marche si vous flânez dans la vallée",
-    duration: "2 à 4 h pour bien profiter",
-    water: "Fontaines dans la vallée (Yosemite Village) — pas indispensable pour cette étape courte, mais utile si vous ajoutez une rando.",
-    gear: "Jumelles pour repérer les grimpeurs sur El Capitan, appareil photo grand angle.",
-    reservation: "Aucune en 2026 pour l'entrée générale — seuls certains treks spécifiques (Half Dome, permis de bivouac) nécessitent un permis séparé, non concernés par votre programme.",
-    tips: ["En septembre, les chutes d'eau (Yosemite Falls, Bridalveil) sont souvent bien réduites voire à sec par rapport au printemps — ne soyez pas surpris.", "Septembre reste l'un des mois les plus fréquentés de l'année : privilégiez une arrivée matinale."]
+    name: "Cathedral Beach (baignade dans la Merced)",
+    difficulty: "easy", diffLabel: "Facile — le seul enjeu est la baignade, pas la marche",
+    distance: "Accès direct depuis l'arrêt 10 de la navette Valleywide, pas de marche d'approche",
+    duration: "≈1h sur place",
+    water: "⚠️ Aucune eau potable à Cathedral Beach (comme la plupart des aires de pique-nique de Yosemite) — remplissez les gourdes avant de quitter le secteur Yosemite Village.",
+    gear: "Maillot de bain, petite serviette, sandales/chaussures d'eau si vous en avez, crème solaire. Pique-nique sorti de la glacière (acheté à Oakhurst la veille).",
+    reservation: "Aucune. Baignade généralement autorisée dans la Merced, à décider sur place selon le niveau et le courant (voir l'alerte ci-dessus pour les seuils).",
+    tips: [
+      "Objectif réaliste : tremper les pieds/jambes ou une trempette de 10-20 min, pas une session natation — ça suffit largement pour l'expérience.",
+      "El Capitan est juste en face : c'est ce qui rend Cathedral Beach bien meilleure que l'aire de pique-nique classique d'El Capitan pour cette pause.",
+      "Plan B si besoin : Sentinel Beach, un peu plus loin sur la même navette, offre un accès similaire à la rivière.",
+      "Mirror Lake volontairement écarté : à cette période, il est souvent presque à sec et représente un détour de plusieurs km pour un intérêt moindre que Cathedral Beach.",
+      "En sortant, ne cherchez pas absolument une place au mini-parking de Valley View si c'est plein — la vue depuis la route en sortant reste correcte, mieux vaut ne pas perdre 20 min à tourner."
+    ]
   }
 },
 // ---------------------------------------------------------------- JOUR 13
