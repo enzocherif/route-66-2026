@@ -590,14 +590,14 @@ const DAYS = [
 const RESERVATIONS = [
   { date:"5 sept.", label:"Avion Pittsburgh → Oklahoma City", link:null, done:true, price:"145,46 $" },
   { date:"5 → 17 sept.", label:"Location voiture (OKC → LA)", link:null, done:true, price:"389 $" },
-  { date:"Tout le séjour", label:"Pass America the Beautiful (parcs nationaux)", link:"https://www.recreation.gov/", done:false, price:"80 $ (US)", urgent:true },
+  { date:"Tout le séjour", label:"Pass America the Beautiful (80 $ pour la voiture, à deux)", link:"https://www.recreation.gov/", done:false, price:"40 $", urgent:true },
   { date:"5 → 6 sept.", label:"Hôtel Oklahoma City", link:"https://www.booking.com/Share-ckQuly", done:true, price:"35,50 $" },
   { date:"6 → 7 sept.", label:"Hôtel Tucumcari", link:"https://www.booking.com/Share-W7rA1m", done:true, price:"27,78 $" },
   { date:"7 → 8 sept.", label:"Hôtel Bloomfield", link:"https://www.booking.com/Share-BGfTBSx", done:true, price:"35 $" },
   { date:"8 → 9 sept.", label:"Hôtel Tusayan", link:"https://www.booking.com/Share-mp0o9Ru", done:true, price:"85 $" },
   { date:"9 → 10 sept.", label:"Hôtel Page", link:"https://www.booking.com/Share-GNo6a7", done:true, price:"24,04 $" },
-  { date:"10 sept.", label:"Antelope Canyon — Upper (randonnée complète HG, GetYourGuide)", link:null, done:true, price:"169,60 € / 2 pers." },
-  { date:"10 sept.", label:"Antelope Canyon — kayak (WazSUP Kayaks, tandem)", link:"https://wazsupkayaks.com/rentals/", done:true, price:"≈70 $/jour" },
+  { date:"10 sept.", label:"Antelope Canyon — Upper (randonnée complète HG, GetYourGuide, 169,60 € à deux)", link:null, done:true, price:"92 $" },
+  { date:"10 sept.", label:"Antelope Canyon — kayak (WazSUP Kayaks, tandem, ≈70 $/jour à deux)", link:"https://wazsupkayaks.com/rentals/", done:true, price:"35 $" },
   { date:"10 → 11 sept.", label:"Hôtel Kanab", link:"https://www.booking.com/Share-bdMry3i", done:true, price:"32,38 $" },
   { date:"11 → 14 sept.", label:"Hôtel Las Vegas (Luxor)", link:null, done:true, price:"245,50 $" },
   { date:"14 → 15 sept.", label:"Hôtel Lindsay", link:"https://www.booking.com/Share-Q6a43Ew", done:true, price:"43 $" },
@@ -608,7 +608,9 @@ const RESERVATIONS = [
   { date:"18 sept.", label:"Billets Universal Studios LA", link:"https://www.universalstudioshollywood.com/", done:false, price:"—", urgent:true },
   { date:"22 sept.", label:"Avion Los Angeles → Pittsburgh", link:null, done:true, price:"134 $" }
 ];
-const BUDGET_TOTAL = 1560.10;
+// Note : le total du budget n'est plus une constante figée — script.js le recalcule
+// dynamiquement à partir des réservations marquées "done" (RESERVATIONS), pour rester
+// toujours juste même quand une réservation change de statut (ex. kayak réservé après coup).
 
 // ---------------------------------------------------------------- LISTE DE COURSES
 const SHOPPING = [
