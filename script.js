@@ -123,7 +123,11 @@ function fallbackSvg(title){
 
 function selectDay(id){
   document.querySelectorAll(".day-panel").forEach(p => p.classList.toggle("active", p.dataset.day == id));
-  document.querySelectorAll(".mile").forEach(m => m.classList.toggle("active", m.dataset.day == id));
+  document.querySelectorAll(".mile").forEach(m => {
+    const isActive = m.dataset.day == id;
+    m.classList.toggle("active", isActive);
+    if(isActive){ m.setAttribute("aria-current", "true"); } else { m.removeAttribute("aria-current"); }
+  });
   const activeMile = document.querySelector(`.mile[data-day="${id}"]`);
   if(activeMile) activeMile.scrollIntoView({ behavior:"smooth", inline:"center", block:"nearest" });
   localStorage.setItem("r66_lastDay", id);
@@ -133,7 +137,10 @@ function initRoadNav(){
   document.getElementById("roadTrack").addEventListener("click", (e) => {
     const btn = e.target.closest(".mile");
     if(!btn) return;
-    document.getElementById("mainNavTab").click();
+    // Marque l'onglet "Programme jour par jour" comme actif sans déclencher
+    // le saut instantané natif d'un vrai clic sur l'ancre (qui entrait en
+    // conflit avec le scroll fluide déclenché juste après).
+    document.querySelectorAll(".quicknav a").forEach(a => a.classList.toggle("active", a.id === "mainNavTab"));
     selectDay(btn.dataset.day);
     document.getElementById("dayPanels").scrollIntoView({ behavior:"smooth", block:"start" });
   });
@@ -144,11 +151,11 @@ function renderReservations(){
   const tbody = document.getElementById("resBody");
   tbody.innerHTML = RESERVATIONS.map((r,i) => `
     <tr class="${r.urgent ? 'urgent' : ''}">
-      <td><input type="checkbox" class="check" data-idx="${i}" ${r.done ? "checked":""}></td>
-      <td>${r.date}</td>
-      <td>${r.label}${r.link ? ` — <a class="tl-link" href="${r.link}" target="_blank" rel="noopener">lien</a>` : ""}</td>
-      <td>${r.price}</td>
-      <td>${r.done ? `<span class="status-pill done">Réservé</span>` : `<span class="status-pill todo">À réserver</span>`}</td>
+      <td data-label="Réservé"><input type="checkbox" class="check" data-idx="${i}" aria-label="${r.label} — marquer comme réservé" ${r.done ? "checked":""}></td>
+      <td data-label="Dates">${r.date}</td>
+      <td data-label="Élément">${r.label}${r.link ? ` — <a class="tl-link" href="${r.link}" target="_blank" rel="noopener">lien</a>` : ""}</td>
+      <td data-label="Prix / pers.">${r.price}</td>
+      <td data-label="Statut">${r.done ? `<span class="status-pill done">Réservé</span>` : `<span class="status-pill todo">À réserver</span>`}</td>
     </tr>`).join("");
 
   const saved = JSON.parse(localStorage.getItem("r66_res") || "{}");
@@ -204,30 +211,46 @@ function updateShopProgress(){
 }
 
 /* ---------------- Budget ---------------- */
+function parsePrice(str){
+  // Extrait un nombre décimal d'une chaîne de prix formatée (ex: "35,50 $" -> 35.5).
+  // Ne garde que le PREMIER nombre rencontré pour éviter qu'un chiffre présent plus loin
+  // dans la chaîne (ex: "à deux", "2 pers.") ne vienne polluer le résultat.
+  if(!str) return NaN;
+  const match = String(str).match(/\d+(?:[.,]\d+)?/);
+  if(!match) return NaN;
+  return parseFloat(match[0].replace(",", "."));
+}
+
 function renderBudget(){
-  document.getElementById("budgetTotal").textContent = BUDGET_TOTAL.toLocaleString("fr-FR", {minimumFractionDigits:2}) + " $";
   const groups = [
     { label:"Vols", match: l => l.toLowerCase().includes("avion") },
     { label:"Location voitures", match: l => l.toLowerCase().includes("location") },
     { label:"Hôtels", match: l => l.toLowerCase().includes("hôtel") },
-    { label:"Activités & pass", match: l => true }
+    { label:"Activités & pass", match: () => true }
   ];
   const used = new Set();
   const totals = groups.map(g => {
     let sum = 0;
     RESERVATIONS.forEach((r, i) => {
-      if(used.has(i)) return;
-      const num = parseFloat((r.price||"").replace(/[^\d.,]/g,"").replace(",", "."));
+      if(used.has(i) || !r.done) return;
+      const num = parsePrice(r.price);
       if(g.match(r.label) && !isNaN(num)){ sum += num; used.add(i); }
     });
     return { label: g.label, sum };
   });
+
+  // Le total affiché est calculé dynamiquement à partir des réservations confirmées
+  // (done: true) plutôt que depuis une constante figée, pour rester exact même quand
+  // le statut d'une réservation change (voir data.js).
+  const grandTotal = totals.reduce((a, t) => a + t.sum, 0);
+  document.getElementById("budgetTotal").textContent = grandTotal.toLocaleString("fr-FR", {minimumFractionDigits:2}) + " $";
+
   const max = Math.max(...totals.map(t=>t.sum), 1);
   document.getElementById("budgetBars").innerHTML = totals.map(t => `
     <div class="bbar-row">
-      <div>${t.label}</div>
+      <div class="bbar-label">${t.label}</div>
       <div class="bbar-track"><div class="bbar-fill" style="width:${(t.sum/max*100).toFixed(0)}%"></div></div>
-      <div>${t.sum.toFixed(0)} $</div>
+      <div class="bbar-value">${t.sum.toFixed(0)} $</div>
     </div>`).join("");
 }
 
@@ -235,11 +258,19 @@ function renderBudget(){
 function initQuicknav(){
   const links = document.querySelectorAll(".quicknav a");
   const secs = [...links].map(l => document.querySelector(l.getAttribute("href")));
-  window.addEventListener("scroll", () => {
+  const shell = document.querySelector(".road-nav-shell");
+
+  function updateActive(){
+    // Hauteur réelle de la nav sticky (variable selon la taille d'écran) plutôt
+    // qu'un décalage codé en dur, pour rester juste sur mobile comme sur desktop.
+    const offset = (shell ? shell.offsetHeight : 140) + 12;
     let current = secs[0];
-    secs.forEach(s => { if(s && window.scrollY >= s.offsetTop - 140) current = s; });
+    secs.forEach(s => { if(s && window.scrollY >= s.offsetTop - offset) current = s; });
     links.forEach(l => l.classList.toggle("active", l.getAttribute("href") === "#" + current?.id));
-  });
+  }
+
+  window.addEventListener("scroll", updateActive, { passive: true });
+  window.addEventListener("resize", updateActive);
 }
 
 /* ---------------- Init ---------------- */
